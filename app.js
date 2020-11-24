@@ -36,7 +36,7 @@ app.use(express.static(`public`));
 mongoose.Promise = global.Promise;
 
 const connectDB = async () => {
-    await mongoose.connect(db.url, db.options);
+    await mongoose.connect(db.uri, db.options);
     console.log(`DB Connected....`);
 };
 
