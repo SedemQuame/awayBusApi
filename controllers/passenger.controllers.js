@@ -5,8 +5,6 @@
 const passenger = require(`../models/passenger.models`);
 // exports
 exports.createPassengerAccount = (req, res, next) => {
-    console.log(`Create passenger account`);
-    console.log(req.body);
     passenger.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -18,7 +16,6 @@ exports.createPassengerAccount = (req, res, next) => {
         bookings: [],
         notifications: [],
     }).then((doc) => {
-        console.log(`Passenger account created successfully.`);
         // send unique passenger identification.
         res.status(200).send({
             status: `Completed`,
@@ -26,7 +23,6 @@ exports.createPassengerAccount = (req, res, next) => {
             message: `Passenger account created successfully.`
         });
     }).catch((err) => {
-        console.log(`Unable to create passenger account.`);
         res.status(404).send({
             status: `Not Found`,
             error: err,
@@ -36,8 +32,6 @@ exports.createPassengerAccount = (req, res, next) => {
 };
 
 exports.deletePassengerAccount = (req, res, next) => {
-    console.log(`Delete passenger account`);
-    console.log(req.body);
     passenger.findByIdAndDelete({_id: req.body.Id})
         .then((doc) => {
             res.status(200).send({
@@ -54,8 +48,6 @@ exports.deletePassengerAccount = (req, res, next) => {
 };
 
 exports.getAllPassengers = (req, res, next) => {
-    console.log(`Get all passenger accounts`);
-    console.log(req.body);
     passenger.find({})
         .then((docs) => {
             res.status(200).send({
@@ -74,8 +66,6 @@ exports.getAllPassengers = (req, res, next) => {
 };
 
 exports.getPassengerById = (req, res, next) => {
-    console.log(`Get passenger account by id`);
-    console.log(req.body);
     passenger.find({_id: req.body.Id})
         .then((doc) => {
             res.status(200).send({

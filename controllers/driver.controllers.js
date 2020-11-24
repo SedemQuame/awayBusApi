@@ -5,9 +5,6 @@
 const driver = require(`../models/driver.models`);
 // exports
 exports.createDriverAccount = (req, res, next) => {
-    console.log(`Create Driver Account`);
-    console.log(req.body);
-    
     driver.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -57,8 +54,6 @@ exports.deleteDriverById = (req, res, next) => {
 };
 
 exports.getAllDrivers = (req, res, next) => {
-    console.log(`Get All Driver Account`);
-    console.log(req.body);
     driver.find({}).then((docs) => {
         res.status(200).send({
             status: 200,
@@ -94,8 +89,6 @@ exports.getDriverById = (req, res, next) => {
 };
 
 exports.updateDriverCredentials = (req, res, next) => {
-    console.log(`Update Driver Account`);
-    console.log(req.body);
     driver.findByIdAndUpdate({_id: req.body.Id})
         .then((doc) => {
 

@@ -6,9 +6,6 @@ const bus = require(`../models/bus.models`);
 
 // exports
 exports.createBus = (req, res, next) => {
-    console.log(req.body);
-    
-    
     bus.create({
         driverId: req.body.driverId,
         cargoVolume: req.body.cargoVolume + " FTQ", // unit in cubic foot
@@ -38,8 +35,6 @@ exports.createBus = (req, res, next) => {
 };
 
 exports.createPassengerReview = (req, res, next) => {
-    console.log("Passenger Review: ");
-    console.log(req.body);
     bus.findByIdAndUpdate({_id: req.body.Id})
         .then((doc) => {
 
@@ -62,8 +57,7 @@ exports.createPassengerReview = (req, res, next) => {
 };
 
 exports.deleteBus = (req, res, next) => {
-    console.log(`Delete Bus`);
-    console.log(req.body);
+
     bus.findByIdAndDelete({_id: req.body.Id})
         .then((doc) => {
             res.status(200).send({
@@ -81,8 +75,6 @@ exports.deleteBus = (req, res, next) => {
 };
 
 exports.getAllBus = (req, res, next) => {
-    console.log(`Get All Bus`);
-    console.log(req.body);
     bus.find({})
         .then((docs) => {
             res.status(200).send({
@@ -100,8 +92,6 @@ exports.getAllBus = (req, res, next) => {
 };
 
 exports.getBusById = (req, res, next) => {
-    console.log(`Get Bus By Id`);
-    console.log(req.body);
     bus.findById({_id: req.body.Id})
         .then((doc) => {
             res.status(200).send({
@@ -119,8 +109,6 @@ exports.getBusById = (req, res, next) => {
 };
 
 exports.uploadBusInfo = (req, res, next) => {
-    console.log(`Update Bus Bus`);
-    console.log(req.body);    
     bus.findByIdAndUpdate({_id: req.body.Id})
         .then(() => {
             res.status(200).send({

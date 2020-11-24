@@ -7,7 +7,7 @@ module.exports = app => {
     app.route(`/createDriverAccount`)
         .post(driver.createDriverAccount);
 
-    app.route(`createDriverNotifications`)
+    app.route(`/createDriverNotifications`)
         .post(driver.createDriverNotifications)
 
 //  delete routes

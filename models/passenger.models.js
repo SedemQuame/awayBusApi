@@ -24,7 +24,6 @@ const passengerSchema = new mongoose.Schema({
     emailAddress: { type: String },
     profileImg: {type: String},
     password: { type: String },
-// ==================================
     bookings: [bookingSchema],
     notifications: [notificationSchema],
 });
