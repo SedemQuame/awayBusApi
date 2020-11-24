@@ -11,12 +11,24 @@
 const express = require(`express`);
 const mongoose = require(`mongoose`);
 const bodyParser = require(`body-parser`);
+const dotenv = require(`dotenv`);
 // custom modules
 const db = require(`./config/db.config`);
 
 // ================================== express app configurations ==================================== //
 //creating app
 const app = express();
+
+// ========================================== configure environment variables  ========================================== //
+if(!process.env.MODE){
+    const result = dotenv.config({path: `./config/.env`});
+    if (result.error) {
+        // throw result.error;
+        app.use(function(req, res){
+            res.status(404).render('connectionErr.ejs', {loggedIn: false});
+        });
+    }
+}
 
 // creating video routes
 const router = express.Router();
@@ -34,6 +46,8 @@ app.use(express.static(`public`));
 
 // ====================================== db configurations ========================================= //
 mongoose.Promise = global.Promise;
+
+console.log(db.uri);
 
 const connectDB = async () => {
     await mongoose.connect(db.uri, db.options);
