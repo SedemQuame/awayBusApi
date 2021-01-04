@@ -97,7 +97,6 @@ exports.updatePassengerCredentials = (req, res, next) => {
             doc.profileImg  = req.body.profileImg;
             doc.password    = req.body.password;
             doc.save();
-
             res.status(200).send({
                 status: `Updated`,
                 message: `Successfully updated passenger details.`

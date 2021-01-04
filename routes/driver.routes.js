@@ -2,27 +2,25 @@
 // ================================ creating application routes ===================================//
 module.exports = app => {
     const driver = require(`../controllers/driver.controllers`);
-
-// create routes
+    // create routes
     app.route(`/createDriverAccount`)
         .post(driver.createDriverAccount);
 
-    app.route(`/createDriverNotifications`)
-        .post(driver.createDriverNotifications)
+    app.route(`createDriverNotifications`)
+        .post(driver.createDriverNotifications);
 
-//  delete routes
-    app.route(`/deleteDriverById`)
+    //  delete routes
+    app.route(`/deleteDriverById/:driverId`)
         .post(driver.deleteDriverById);
 
-// get routes
+    // get routes
     app.route(`/getAllDrivers`)
         .get(driver.getAllDrivers);
 
-    app.route(`/getDriverById`)
+    app.route(`/getDriverById/:driverId`)
         .get(driver.getDriverById);
 
-// update routes
+    // update routes
     app.route(`/updateDriverCredentials`)
         .post(driver.updateDriverCredentials);
-    
 };

@@ -5,8 +5,8 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 // ==================================== sub-document schemas ==========================================//
 const notificationSchema = new mongoose.Schema({
-    notificationDate: {type: Date, default: Date.now},
-    message: {type: String},
+    notificationDate: { type: Date, default: Date.now },
+    message: { type: String },
 });
 
 // ==================================== document schema=======================================//
@@ -16,14 +16,15 @@ const driverSchema = new mongoose.Schema({
     dateOfBirth: { type: String },
     phoneNumber: { type: String },
     emailAddress: { type: String },
-    profileImg: {type: String},
+    profileImg: { type: String },
     password: { type: String },
-// ==== driver specific details =====
-    staffId: { type: String },
+    accessLevel: { type: Number },
+    staffType: { type: String },
+    // ==== driver specific details =====
     driverLicense: { type: String },
-    startDate: {type: Date, default: Date.now},
-    driverScore: {type: Number, default: 10},
-// ==================================
+    startDate: { type: Date, default: Date.now },
+    driverScore: { type: Number, default: 10 },
+    // ==================================
     notifications: [notificationSchema],
 });
 

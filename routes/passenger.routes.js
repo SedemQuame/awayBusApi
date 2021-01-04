@@ -1,24 +1,35 @@
-// jshint esversion:6 
+// jshint esversion:6
+
 // ================================ creating application routes ===================================//
 module.exports = app => {
     const passenger = require(`../controllers/passenger.controllers`);
 
-// create routes
-    app.route(`/createPassengerAccount`)
+    // create passengers accounts
+    app.route(`/create`)
         .post(passenger.createPassengerAccount);
 
-//  delete routes
+    // log into passenger account
+    app.route(`/login`)
+        .post(passenger.accessPassengerAccount);
+
+    //  delete routes
     app.route(`/deletePassengerAccount`)
         .post(passenger.deletePassengerAccount);
 
-// get routes
+    // get routes
     app.route(`/getAllPassengers`)
         .get(passenger.getAllPassengers);
 
     app.route(`/getPassengerById`)
         .get(passenger.getPassengerById);
 
-// update routes
+    // update routes
     app.route(`/updatePassengerCredentials`)
         .post(passenger.updatePassengerCredentials);
+
+    app.route(`/users`)
+        .get(passenger.getAllPassengers);
+
+    app.route(`/searchPassengers`)
+        .post(passenger.searchPassengers);
 };

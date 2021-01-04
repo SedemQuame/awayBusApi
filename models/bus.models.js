@@ -12,22 +12,51 @@ const fuelSchema = new mongoose.Schema({
 });
 
 const passengerReviewSchema = new mongoose.Schema({
-    date: {type: Date, default: Date.now},
-    passengerId: {type: String},
-    comment: {type: String},
+    date: { type: Date, default: Date.now },
+    passengerId: { type: String },
+    comment: { type: String },
 });
 
+const amenitiesSchema = new mongoose.Schema({
+    luggageRacks: { type: Boolean },
+    passengerServiceUnits: { type: Boolean },
+    onBoardRestRooms: { type: Boolean },
+    onBoardEntertainment: { type: Boolean },
+    refereshmentService: { type: Boolean },
+    onBoardWifi: { type: Boolean },
+    onBoardACPower: { type: Boolean },
+});
+
+// const seat = new mongoose.Schema({
+//     value: {type: String},
+//     booked: {type: Boolean}
+// });
+
+// const seatArrangeSchema = new mongoose.Schema({
+//     rows: { type: Number },
+//     cols: { type: Number },
+// });
+
+
 const busSchema = new mongoose.Schema({
-    driverId: { type: String },
-    cargoVolume: { type: String },
-    driversLicense: { type: String },
-    accelerationTime: { type: String },
+    busOwner: { type: String },
     busSeatingCapacity: { type: String },
+    busModel: { type: String },
+    cargoVolume: { type: String },
+    accelerationTime: { type: String },
     busSpeed: { type: String },
-    imageUrl: { type: String },
-// ==================================
+    busMileage: { type: String },
+    busNumberPlate: { type: String },
+    busColor: { type: String },
+    profileCreatorNotes: { type: String },
+    busImageUrls: [],
+    driverId: { type: String },
+    // ==================================
     fuel: fuelSchema,
     passengerReviews: [passengerReviewSchema],
+    amenities: amenitiesSchema,
+    // ==================================
+    // seatArrangement: seatArrangeSchema,
 });
 
 busSchema.plugin(passportLocalMongoose);
